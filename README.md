@@ -27,15 +27,9 @@ PwBot is a web-based chatbot designed to provide quick, accurate, and profession
 
 * What is Pesaway?
 * Tell me about e-Retail.
-* Convert 100 USD to KES.
 * How do I integrate via API?
 
 # Technologies Used
-* HTML5
-* CSS3
-* JavaScript (Vanilla)
-
----
-
-I can also prepare a **more polished version** with a brief installation section in case you plan to host it online.
-Do you want me to include that?
+ HTML5
+ CSS3
+ JavaScript (Vanilla)
