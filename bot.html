@@ -2,175 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>PwBot Chat</title>
-  <style>
-    body {
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      background: #2a3239;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 50px;
-    }
-
-    #chatBox {
-      width: 100%;
-      max-width: 500px;
-      background: #3b6d46;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(145, 58, 58, 0.1);
-    }
-
-    #messages {
-      height: 350px;
-      overflow-y: auto;
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      padding: 10px;
-      background: #fafbfa;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .bubble {
-      padding: 10px 15px;
-      border-radius: 15px;
-      max-width: 80%;
-      word-wrap: break-word;
-    }
-
-    .bot {
-      align-self: flex-start;
-      background-color: #e1f3e8;
-      color: #1d3b2c;
-    }
-
-    .user {
-      align-self: flex-end;
-      background-color: #dbeafe;
-      color: #1e3a8a;
-    }
-
-    input {
-      width: 75%;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      padding: 10px 15px;
-      font-size: 16px;
-      border: none;
-      background-color: #1e3a8a;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #274baf;
-    }
-  </style>
+  <title>PwBot – Pesaway Assistant</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="chatBox">
-  <h2 style="color: white; text-align:center;"> PWBot <3 </h2>
+<div id="chatContainer">
+  <div id="header">PwBot – Pesaway Assistant</div>
   <div id="messages"></div>
-  <input type="text" id="userInput" placeholder="How may i helo..." />
-  <button onclick="processInput()">Send</button>
+  <div id="inputArea">
+    <input type="text" id="userInput" placeholder="Ask about Pesaway, MROs, cards..." />
+    <button id="sendBtn">Send</button>
+  </div>
 </div>
 
-<script>
-  const botName = "teacherBot";
-  const botNickname = "Professor Bot";
-  const botWishName = "coolTBot";
-  const botLocation = "the universe";
-  const favoriteSubject = "Computer Science";
-
-  function sendMessage(message, sender = "bot") {
-    const messagesDiv = document.getElementById("messages");
-    const bubble = document.createElement("div");
-    bubble.classList.add("bubble", sender);
-    bubble.textContent = message;
-    messagesDiv.appendChild(bubble);
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-  }
-
-  function processInput() {
-    const input = document.getElementById("userInput").value.trim();
-    if (!input) return;
-
-    sendMessage(input, "user");
-    const message = input.toLowerCase();
-
-    if (message.includes("bye") || message.includes("exit")) {
-      sendMessage("Well, it was nice talking to you. Have a great day!");
-      document.getElementById("userInput").disabled = true;
-      return;
-    }
-
-    const mathRegex = /^([-+]?[0-9]*\.?[0-9]+)\s*([+\-*/])\s*([-+]?[0-9]*\.?[0-9]+)$/;
-    const mathMatch = message.match(mathRegex);
-
-    if (mathMatch) {
-      const num1 = parseFloat(mathMatch[1]);
-      const operator = mathMatch[2];
-      const num2 = parseFloat(mathMatch[3]);
-
-      if (operator === '/' && num2 === 0) {
-        sendMessage(" Error: Division by zero is not allowed!");
-      } else {
-        let result;
-        switch (operator) {
-          case '+': result = num1 + num2; break;
-          case '-': result = num1 - num2; break;
-          case '*': result = num1 * num2; break;
-          case '/': result = num1 / num2; break;
-        }
-        sendMessage(` Math result: ${num1} ${operator} ${num2} = ${result}`);
-      }
-    } else if (message.includes("nickname")) {
-      sendMessage(`My nickname is ${botNickname}, but I secretly wish people called me ${botWishName}.`);
-    } else if (message.includes("name") && !message.includes("nickname")) {
-      sendMessage(`My name is ${botName}.`);
-    } else if (message.includes("location") || message.includes("live")) {
-      sendMessage(`I currently reside in ${botLocation}.`);
-    } else if (message.includes("subject") || message.includes("favorite")) {
-      sendMessage(`My favorite subject is ${favoriteSubject}!`);
-    } else {
-      sendMessage(`You can call me ${botName}, or ${botNickname} if you're feeling formal.`);
-      sendMessage(`Feel free to ask me to calculate something like "12 * 8" or "15 / 3".`);
-    }
-
-    document.getElementById("userInput").value = "";
-  }
-
- 
-  const introMessages = [
-    "Hi there! ",
-    "I'm so excited to chat with you!",
-    `Let me introduce myself...`,
-    `My name is ${botName}.`,
-    `I live in ${botLocation}.`,
-    `My favorite subject is ${favoriteSubject}.`,
-    `So, want to try a quick math problem? Just type something like "7 + 2" or ask me anything!`
-  ];
-
-  introMessages.forEach((msg, index) => {
-    setTimeout(() => sendMessage(msg), 1000 * index);
-  });
-  
-  document.getElementById("userInput").addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    processInput();
-  }
-});
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
