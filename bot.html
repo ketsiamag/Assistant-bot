@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>PwBot – Pesaway Assistant</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
 </head>
 <body>
 
@@ -12,7 +13,12 @@
   <div id="messages"></div>
   <div id="inputArea">
     <input type="text" id="userInput" placeholder="Ask about Pesaway, MROs, cards..." />
-    <button id="sendBtn">Send</button>
+    <button id="sendBtn" type="button" title="Send" aria-label="Send">
+      <i class="fi fi-rr-paper-plane" aria-hidden="true"></i>
+    </button>
+  </div>
+ <div id="typing-indicator" style="display:none; font-style: italic; color: gray;">
+    PwBot is typing...
   </div>
   <div id="typing-indicator" style="display:none; font-style: italic; color: gray;">
   PwBot is typing...

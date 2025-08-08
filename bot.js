@@ -161,6 +161,6 @@ inputEl.addEventListener("keydown", e => {
 });
 
 window.onload = () => {
-  sendMessage("Welcome to PwBot.");
-  sendMessage("Ask about Pesaway services like MROs, card payments, integrations, and more.");
+  botReply("Welcome to PwBot.");
+  botReply("Ask about Pesaway services like MROs, card payments, integrations, and more.");
 };
