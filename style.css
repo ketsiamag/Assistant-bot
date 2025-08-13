@@ -156,3 +156,10 @@ button:hover {
 .feedback-buttons button:hover {
   opacity: 0.8;
 }
+.timestamp {
+  display: block;
+  font-size: 0.7em;
+  color: gray;
+  margin-top: 2px;
+  text-align: right;
+}
