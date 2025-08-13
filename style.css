@@ -163,3 +163,10 @@ button:hover {
   margin-top: 2px;
   text-align: right;
 }
+
+.typing-indicator {
+  font-size: 0.85em;
+  font-style: italic;
+  color: gray;
+  margin: 5px 10px;
+}
