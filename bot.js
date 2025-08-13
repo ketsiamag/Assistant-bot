@@ -2,6 +2,24 @@ const messagesEl = document.getElementById("messages");
 const inputEl = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
+// Typing Indicator
+function showTypingIndicator() {
+  const typingEl = document.getElementById("typing-indicator");
+  if (typingEl) typingEl.style.display = "block";
+}
+
+function hideTypingIndicator() {
+  const typingEl = document.getElementById("typing-indicator");
+  if (typingEl) typingEl.style.display = "none";
+}
+
+function botReply(message, delay = 1500, showFeedback = false) {
+  showTypingIndicator();
+  setTimeout(() => {
+    hideTypingIndicator();
+    sendMessage(message, "bot", showFeedback);
+  }, delay);
+}
 function sendMessage(message, sender = "bot", showFeedback = false) {
   // Create message bubble
   const msgDiv = document.createElement("div");
