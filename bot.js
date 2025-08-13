@@ -2,16 +2,27 @@ const messagesEl = document.getElementById("messages");
 const inputEl = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
-// Send message to chat
 function sendMessage(message, sender = "bot", showFeedback = false) {
+  // Create message bubble
   const msgDiv = document.createElement("div");
   msgDiv.className = `bubble ${sender}`;
-  msgDiv.textContent = message;
-  msgDiv.innerHTML = message; 
-  
+
+  const textEl = document.createElement("div");
+  textEl.className = "message-text";
+  textEl.innerHTML = message;
+
+  // Timestamp element 
+  const timestampEl = document.createElement("small");
+  timestampEl.className = "timestamp";
+  const now = new Date();
+  timestampEl.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  msgDiv.appendChild(textEl);
+  msgDiv.appendChild(timestampEl);
+
   messagesEl.appendChild(msgDiv);
 
-  // If bot message & feedback requested
+  // Feedback buttons (only for bot!)
   if (sender === "bot" && showFeedback) {
     const feedbackDiv = document.createElement("div");
     feedbackDiv.className = "feedback-buttons";
@@ -31,10 +42,9 @@ function sendMessage(message, sender = "bot", showFeedback = false) {
     messagesEl.appendChild(feedbackDiv);
   }
 
+  // Auto scroll
   messagesEl.scrollTop = messagesEl.scrollHeight;
 }
-
-// Handle feedback click
 function handleFeedback(response, relatedMessage) {
   console.log(`Feedback: ${response} for "${relatedMessage}"`);
   
