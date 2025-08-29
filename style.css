@@ -5,8 +5,8 @@
   --primary: rgb(0, 182, 175); 
   --accent: rgb( 244,121,32);
   --background: #020e13;
-  --bot-bg: #e9f1ff;
-  --user-bg: #fff3e0;
+  --bot-bg: white;
+  --user-bg: white;
   --text-dark: #202124;
 }
 
@@ -24,7 +24,6 @@ body {
   height: 100vh;
 }
 
-/* Chat container */
 /* Chat container */
 #chatContainer {
   background-color: white;
