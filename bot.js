@@ -2,7 +2,7 @@ const messagesEl = document.getElementById("messages");
 const inputEl = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
-// Create typing indicator element in chat area
+// typing indicator in chat area
 function showTypingIndicator() {
   const typingEl = document.createElement("div");
   typingEl.className = "bubble bot typing-indicator";
@@ -31,6 +31,23 @@ function botReply(message, delay = 1500, showFeedback = false) {
 
 // Send Message Function
 function sendMessage(message, sender = "bot", showFeedback = false) {
+  
+  const wrapper = document.createElement("div");
+  wrapper.className = `message-wrapper ${sender}`;
+
+  // Add bot avatar
+  if (sender === "bot") {
+    const avatarWrapper = document.createElement("div");
+    avatarWrapper.className = "avatar-wrapper";
+    const avatar = document.createElement("img");
+    avatar.src = "min.png"; 
+    avatar.alt = "Bot Avatar";
+    avatar.className = "avatar";
+    avatarWrapper.appendChild(avatar);
+    wrapper.appendChild(avatarWrapper);
+  }
+
+  // Message bubble
   const msgDiv = document.createElement("div");
   msgDiv.className = `bubble ${sender}`;
 
@@ -46,7 +63,8 @@ function sendMessage(message, sender = "bot", showFeedback = false) {
 
   msgDiv.appendChild(textEl);
   msgDiv.appendChild(timestampEl);
-  messagesEl.appendChild(msgDiv);
+  wrapper.appendChild(msgDiv);
+  messagesEl.appendChild(wrapper);
 
   // Feedback for bot
   if (sender === "bot" && showFeedback) {
@@ -154,3 +172,7 @@ window.onload = () => {
   botReply("Welcome to PwBot.");
   botReply("Ask about Pesaway services like MROs, card payments, integrations, and more.");
 };
+
+
+
+
