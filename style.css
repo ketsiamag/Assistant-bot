@@ -46,7 +46,6 @@ body {
 }
 
 /* Messages area */
-/* Messages area */
 #messages {
   flex: 1;
   padding: 16px;
@@ -56,12 +55,14 @@ body {
   gap: 12px;
   background-color: white;
 }
-/* Message bubble styles */
+
 /* Message bubble styles */
 .bubble {
   padding: 12px 16px;
   border-radius: 16px;
   max-width: 80%;
+  min-width: 60px;
+  word-break: break-word;
   font-size: 15px;
   line-height: 1.5;
   position: relative;
@@ -79,7 +80,7 @@ body {
   left: -8px;
   border-width: 8px;
   border-style: solid;
-  border-color: transparent var(--bot-bg) transparent transparent;
+  border-color: transparent #c2e7f0 transparent transparent;
 } 
 .bubble a {
   color: #00B6AF;
@@ -89,27 +90,6 @@ body {
 .bubble a:hover {
   text-decoration: none;
 }
-
-
-/* User message bubble */
-.bot::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: -8px;
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent var(--bot-bg) transparent transparent;
-} 
-.bubble a {
-  color: #00B6AF;
-  text-decoration: underline;
-}
-
-.bubble a:hover {
-  text-decoration: none;
-}
-
 
 /* User message bubble */
 .user {
@@ -124,25 +104,14 @@ body {
   right: -8px;
   border-width: 8px;
   border-style: solid;
-  border-color: transparent transparent transparent var(--user-bg);
-}
-
-/* Input area */
-.user::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  right: -8px;
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent transparent transparent var(--user-bg);
+  border-color: transparent transparent transparent #00B6AF;
 }
 
 /* Input area */
 #inputArea {
   display: flex;
   border-top: 1px solid #c36c1b;
-  background: #1d549d;
+  background: #00B6AF;
 }
 #userInput {
   flex: 1;
@@ -192,6 +161,51 @@ button {
 button:hover {
   background-color: #e65100;
 }
+.message-row {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px 0;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+/* Bot avatar wrapper */
+.avatar-wrapper {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.bubble-wrapper {
+  max-width: 70%;
+}
+
+.bubble.bot {
+  background: #c2e7f0;
+  color: #333;
+}
+
+.bubble.user {
+  background: #c2e7f0;
+  color: #1f1e1e;
+  max-width: 90%;      
+  min-width: 80px;     
+  font-size: 13px;     
+  padding: 14px 15px;  
+}
+
+
 /* Feedback buttons */
 .feedback-buttons {
   display: flex;
@@ -250,4 +264,17 @@ button:hover {
 @keyframes blink {
   0%, 80%, 100% { transform: scale(0); }
   40% { transform: scale(1); }
+}
+
+.message-wrapper.bot {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.message-wrapper.user {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 8px;
 }
