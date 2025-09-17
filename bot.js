@@ -2,7 +2,11 @@ const messagesEl = document.getElementById("messages");
 const inputEl = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
+<<<<<<< HEAD
 // typing indicator in chat area
+=======
+// Create typing indicator element in chat area
+>>>>>>> cd77582dcee6171910a22ae28965998b5e3e444a
 function showTypingIndicator() {
   const typingEl = document.createElement("div");
   typingEl.className = "bubble bot typing-indicator";
@@ -31,6 +35,7 @@ function botReply(message, delay = 1500, showFeedback = false) {
 
 // Send Message Function
 function sendMessage(message, sender = "bot", showFeedback = false) {
+<<<<<<< HEAD
   
   const wrapper = document.createElement("div");
   wrapper.className = `message-wrapper ${sender}`;
@@ -48,6 +53,8 @@ function sendMessage(message, sender = "bot", showFeedback = false) {
   }
 
   // Message bubble
+=======
+>>>>>>> cd77582dcee6171910a22ae28965998b5e3e444a
   const msgDiv = document.createElement("div");
   msgDiv.className = `bubble ${sender}`;
 
@@ -63,8 +70,12 @@ function sendMessage(message, sender = "bot", showFeedback = false) {
 
   msgDiv.appendChild(textEl);
   msgDiv.appendChild(timestampEl);
+<<<<<<< HEAD
   wrapper.appendChild(msgDiv);
   messagesEl.appendChild(wrapper);
+=======
+  messagesEl.appendChild(msgDiv);
+>>>>>>> cd77582dcee6171910a22ae28965998b5e3e444a
 
   // Feedback for bot
   if (sender === "bot" && showFeedback) {
