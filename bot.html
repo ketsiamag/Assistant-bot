@@ -2,30 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>PwBot – Pesaway Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pw Assistant - Chatbot</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Flaticon UIcons -->
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+  <!-- Google Translate -->
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
 </head>
 <body>
-
-<div id="chatContainer">
-  <div id="header">PwBot – Pesaway Assistant</div>
-  <div id="messages"></div>
-  <div id="inputArea">
-    <input type="text" id="userInput" placeholder="Ask about Pesaway, MROs, cards..." />
-    <button id="sendBtn" type="button" title="Send" aria-label="Send">
-      <i class="fi fi-rr-paper-plane" aria-hidden="true"></i>
-    </button>
+  <div class="container">
+    <!-- Sidebar for Recent Chats -->
+    <aside class="sidebar">
+      <h2><i class="fi-rr-time-past"></i> Recent Chats</h2>
+      <ul id="recent-chats"></ul>
+      <button id="clear-chats"><i class="fi-rr-trash"></i> Clear All</button>
+      
+      <!-- Currency Converter Button -->
+      <button id="currency-converter-btn" class="currency-converter-btn">
+        <i class="fi-rr-exchange"></i> Currency Converter
+      </button>
+      
+      <!-- Currency Converter Panel (Hidden by default) -->
+      <div id="currency-converter-panel" class="currency-converter-panel">
+        <h3><i class="fi-rr-exchange"></i> Currency Converter</h3>
+        <div class="converter-form">
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" placeholder="Enter amount" min="0" step="0.01">
+          </div>
+          <div class="form-group">
+            <label for="from-currency">From</label>
+            <select id="from-currency">
+              <option value="">Loading currencies...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="to-currency">To</label>
+            <select id="to-currency">
+              <option value="">Loading currencies...</option>
+            </select>
+          </div>
+          <button id="convert-btn" class="convert-btn">Convert</button>
+          <div id="conversion-result" class="conversion-result"></div>
+          <div id="conversion-error" class="conversion-error"></div>
+          <div class="last-updated">
+            <small id="last-updated-text"></small>
+          </div>
+        </div>
+        <button id="back-to-chats" class="back-to-chats">
+          <i class="fi-rr-arrow-left"></i> Back to Chats
+        </button>
+      </div>
+    </aside>
+    
+    <!-- Main Chat Window -->
+    <main class="chat-container">
+      <header class="chat-header">
+        <h1><i class="fi-rr-robot"></i> Pw Assistant</h1>
+        <div class="translate-dropdown">
+          <button id="translateToggle" class="translate-btn">
+            <i class="fi-rr-globe"></i>
+          </button>
+          <div id="google_translate_element"></div>
+        </div>
+      </header>
+      
+      <!-- Messages Area -->
+      <div class="messages" id="messages"></div>
+      
+      <!-- FAQ Quick Buttons -->
+      <div class="faq-buttons">
+        <button class="faq-btn"><i class="fi-rr-credit-card"></i> How do I top up my account?</button>
+        <button class="faq-btn"><i class="fi-rr-phone"></i> How do I format phone numbers?</button>
+        <button class="faq-btn"><i class="fi-rr-file-invoice-dollar"></i> How can I view recent payments?</button>
+        <button class="faq-btn"><i class="fi-rr-sms"></i> How do I check recent SMS?</button>
+      </div>
+      
+      <!-- Input Area -->
+      <div class="input-area">
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button id="sendBtn"><i class="fi-rr-paper-plane"></i></button>
+      </div>
+    </main>
   </div>
- <div id="typing-indicator" style="display:none; font-style: italic; color: gray;">
-    PwBot is typing...
-  </div>
-  <div id="typing-indicator" style="display:none; font-style: italic; color: gray;">
-  PwBot is typing...
-</div>
-
-</div>
-
-<script src="bot.js"></script>
+  
+  <script src="bot.js"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {pageLanguage: 'en', 
+         includedLanguages: 'en,sw,fr,es,de,zh,ar,hi,pt,ru', 
+         layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+         autoDisplay: false}, 
+        'google_translate_element');
+    }
+  </script>
 </body>
 </html>
