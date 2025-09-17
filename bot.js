@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchExchangeRates();
   }
   
-  // Fetch exchange rates from API (exchangerate-api.com)
+  // Fetch exchange rates from API
   function fetchExchangeRates() {
     fetch('https://open.er-api.com/v6/latest/USD')
       .then(response => response.json())
