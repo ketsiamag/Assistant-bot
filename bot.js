@@ -273,6 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showTypingIndicator();
     setTimeout(() => {
       hideTypingIndicator();
+      // Only show feedback buttons if showFeedback is true
       sendMessage(message, "bot", showFeedback);
     }, delay);
   }
@@ -307,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     messagesEl.appendChild(wrapper);
     
-    // Feedback buttons for bot
+    // Only show feedback buttons if showFeedback is true (i.e., bot can't answer)
     if (sender === "bot" && showFeedback) {
       const feedbackDiv = document.createElement("div");
       feedbackDiv.className = "feedback-buttons";
@@ -607,7 +608,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let matched = false;
     for (const item of responses) {
       if (item.keywords.some((kw) => msg.includes(kw))) {
-        botReply(item.reply, 1200, true);
+        // Only show feedback if bot can't answer (matched = false)
+        botReply(item.reply, 1200, false);
         if (item.showForm) {
           setTimeout(() => showHumanAgentForm(), 2500);
         }
@@ -619,7 +621,7 @@ document.addEventListener('DOMContentLoaded', function() {
       botReply(
         "I'm sorry, I don't have information about that topic. Would you like me to transfer you to a human agent who can better assist you?",
         1200,
-        true
+        true 
       );
       setTimeout(() => {
         const transferBtn = document.createElement("button");

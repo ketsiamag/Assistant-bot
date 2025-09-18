@@ -216,22 +216,35 @@ body {
 /* Header */
 .chat-header {
   background: white;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--border);
+  padding: 11px 2px; 
+  border-bottom: 2px solid var(--primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 182, 175, 0.08);
 }
 .chat-header h1 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--primary);
+  letter-spacing: 0.5px;
+  text-transform: none;
+  margin-bottom: 0;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  position: relative;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
-.chat-header i {
+
+.chat-header h1::after {
+  display: none;
+}
+.chat-header h1 i {
   color: var(--primary);
+  font-size: 20px;
 }
 /* Language selector */
 .language-selector {
@@ -343,7 +356,7 @@ body {
 /* Messages */
 .messages {
   flex: 1;
-  padding: 20px;
+  padding: 30px;
   overflow-y: auto;
   background: var(--background);
 }
@@ -358,15 +371,20 @@ body {
   justify-content: flex-start;
 }
 .message.user {
-  justify-content: flex-end;
+   width: 100%;
+  display: flex;
   flex-direction: row-reverse;
+  justify-content: flex-start; 
+  align-items: flex-end;
+  padding-right: 10px;
 }
+/* Message icon */
 .message-icon {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
@@ -376,13 +394,27 @@ body {
   color: white;
 }
 .message.user .message-icon {
-  background: var(--accent);
-  color: white;
+  margin-left: 0;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--primary);
+  border: none;
+}
+.message.user {
+  width: 100%;
 }
 .bot-icon-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/* User icon  */
+.message.user .message-icon i {
+  font-size: 16px;
+  color: var(--primary);
 }
 /* Bubbles */
 .bubble {
@@ -391,6 +423,7 @@ body {
   border-radius: var(--radius);
   font-size: 14px;
   line-height: 1.5;
+  word-wrap: break-word;
 }
 .message.bot .bubble {
   background: var(--bot-bg);
@@ -398,9 +431,14 @@ body {
   border-radius: 18px 18px 18px 4px;
 }
 .message.user .bubble {
+    margin-right: 0;
+  margin-left: 8px; 
+  max-width: 70%;
   background: var(--primary);
   color: white;
   border-radius: 18px 18px 4px 18px;
+  text-align: right;
+  align-self: flex-end;
 }
 .bubble small {
   display: block;
@@ -433,7 +471,7 @@ body {
 }
 /* FAQ buttons */
 .faq-buttons {
-  padding: 16px 20px;
+  padding: 10px 1px;
   border-top: 1px solid var(--border);
   background: white;
   display: flex;
@@ -451,7 +489,7 @@ body {
   transition: var(--transition);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 .faq-btn:hover {
   background: var(--primary);
@@ -529,7 +567,6 @@ body {
   width: 100%;
   margin-bottom: 16px;
 }
-
 #human-agent-form .bubble.human-agent-form {
   background: white;
   border: 1px solid var(--border);
@@ -537,7 +574,6 @@ body {
   padding: 16px;
   max-width: 90%;
 }
-
 #human-agent-form h4 {
   font-size: 16px;
   font-weight: 600;
@@ -547,17 +583,14 @@ body {
   align-items: center;
   gap: 8px;
 }
-
 #human-agent-form p {
   font-size: 14px;
   color: var(--text-dark);
   margin-bottom: 16px;
 }
-
 #human-agent-form .form-group {
   margin-bottom: 12px;
 }
-
 #human-agent-form .form-group label {
   font-size: 13px;
   font-weight: 500;
@@ -565,7 +598,6 @@ body {
   margin-bottom: 4px;
   display: block;
 }
-
 #human-agent-form .form-group input,
 #human-agent-form .form-group textarea {
   width: 100%;
@@ -577,26 +609,22 @@ body {
   transition: var(--transition);
   font-family: inherit;
 }
-
 #human-agent-form .form-group input:focus,
 #human-agent-form .form-group textarea:focus {
   outline: none;
   border-color: var(--primary);
   background: white;
 }
-
 #human-agent-form .form-group textarea {
   resize: vertical;
   min-height: 80px;
 }
-
 #human-agent-form .form-actions {
   display: flex;
   gap: 10px;
   margin-top: 16px;
   justify-content: flex-end;
 }
-
 #human-agent-form .submit-btn,
 #human-agent-form .cancel-btn {
   padding: 8px 16px;
@@ -607,26 +635,21 @@ body {
   transition: var(--transition);
   border: none;
 }
-
 #human-agent-form .submit-btn {
   background: var(--primary);
   color: white;
 }
-
 #human-agent-form .submit-btn:hover {
   background: #00a39c;
 }
-
 #human-agent-form .cancel-btn {
   background: var(--background);
   color: var(--text-dark);
   border: 1px solid var(--border);
 }
-
 #human-agent-form .cancel-btn:hover {
   background: var(--border);
 }
-
 /* Transfer Button */
 .transfer-btn {
   background: var(--primary);
@@ -641,20 +664,17 @@ body {
   margin: 16px auto;
   display: block;
 }
-
 .transfer-btn:hover {
   background: #00a39c;
 }
-
 /* Scrollbars */
 .messages::-webkit-scrollbar,
 #recent-chats::-webkit-scrollbar { width: 6px; }
 .messages::-webkit-scrollbar-thumb,
 #recent-chats::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background: var(--light-text);
   border-radius: 3px;
 }
-
 /* Responsive */
 @media (max-width: 768px) {
   .container { flex-direction: column; }
@@ -666,8 +686,8 @@ body {
   }
   .bubble { max-width: 85%; }
   .message-icon {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
   }
   .language-selector {
     flex-direction: column;
@@ -679,5 +699,11 @@ body {
   }
   #human-agent-form .bubble.human-agent-form {
     max-width: 95%;
+  }
+  .chat-header h1 {
+    font-size: 20px;
+  }
+  .chat-header h1 i {
+    font-size: 22px;
   }
 }
